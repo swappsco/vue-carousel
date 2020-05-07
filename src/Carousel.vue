@@ -5,7 +5,6 @@
         class="VueCarousel-inner"
         v-bind:style="`
           transform: translateX(${currentOffset}px);
-          transition: ${transitionStyle};
           flex-basis: ${slideWidth}px;
           visibility: ${slideWidth ? 'visible' : 'hidden'}
         `"
@@ -46,7 +45,7 @@
       return {
         browserWidth: null,
         carouselWidth: null,
-        currentPage: 0,
+        currentPage: this.initialPage,
         dragOffset: 0,
         dragStartX: 0,
         mousedown: false,
@@ -178,6 +177,13 @@
       loop: {
         type: Boolean,
         default: false,
+      },
+      /**
+       * Initial page
+       */
+      initialPage: {
+        type: Number,
+        default: 0,
       },
     },
     computed: {
